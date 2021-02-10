@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/map_fragment">
+
+    <fragment
+        android:id="@+id/map_fragment"
+        android:name="com.azatberdimyradov.gezmeyekmi.fragments.MapsFragment"
+        android:label="Map"
+        tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/list_fragment"
+        android:name="com.azatberdimyradov.gezmeyekmi.fragments.CitiesListFragment"
+        android:label="Cities"
+        tools:layout="@layout/fragment_cities_list" >
+        <action
+            android:id="@+id/action_list_fragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gallery_fragment"
+        android:name="com.azatberdimyradov.gezmeyekmi.fragments.GalleryFragment"
+        android:label="Gallery"
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_gallery_fragment_to_pictureFragment"
+            app:destination="@id/pictureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.azatberdimyradov.gezmeyekmi.fragments.DetailsFragment"
+        android:label="{name}"
+        tools:layout="@layout/fragment_details" >
+        <argument android:name="city"
+            app:argType="com.azatberdimyradov.gezmeyekmi.data.City" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detailsFragment_to_pictureFragment"
+            app:destination="@id/pictureFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pictureFragment"
+        android:name="com.azatberdimyradov.gezmeyekmi.fragments.PictureFragment"
+        tools:layout="@layout/fragment_picture">
+        <argument
+            android:name="image"
+            app:argType="com.azatberdimyradov.gezmeyekmi.data.CityPhoto" />
+    </fragment>
+</navigation>
